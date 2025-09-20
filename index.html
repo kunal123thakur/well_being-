@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindEase Campus - Student Mental Health Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor-inner"></div>
+        <div class="cursor-outer"></div>
+    </div>
+
+    <!-- Background 3D Elements -->
+    <div class="floating-3d-elements">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        <div class="floating-orb orb-4"></div>
+        <div class="floating-brain-particles">
+            <div class="brain-particle particle-1"></div>
+            <div class="brain-particle particle-2"></div>
+            <div class="brain-particle particle-3"></div>
+            <div class="brain-particle particle-4"></div>
+            <div class="brain-particle particle-5"></div>
+            <div class="brain-particle particle-6"></div>
+        </div>
+    </div>
+
+    <!-- Background Brain 3D Element -->
+    <div class="brain-3d-background">
+        <div class="brain-container">
+            <div class="brain-core"></div>
+            <div class="neural-network"></div>
+            <div class="brain-particles"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#10B981"/>
+                </svg>
+                <span>MindEase Campus</span>
+            </div>
+            <div class="nav-links">
+                <a href="#resources">Resources</a>
+                <a href="#features">Features</a>
+                <a href="#support">Support</a>
+                <button class="nav-login-btn">👤 Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">It's okay to not be okay.</h1>
+            <p class="hero-subtitle">You're not alone in this journey. MindEase Campus is here to provide you with the support, resources, and care you deserve. Every step forward matters.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary gsap-hover" id="needFriendBtn">
+                    <span class="btn-icon">💚</span>
+                    Need a Friend
+                </button>
+                <button class="btn btn-secondary gsap-hover" id="bookCounselorBtn">
+                    <span class="btn-icon">📚</span>
+                    Book a Counselor
+                </button>
+            </div>
+
+            <!-- Floating Quote with Hourglass -->
+            <div class="floating-quote gsap-float">
+                <div class="hourglass-container">
+                    <div class="hourglass">⌛</div>
+                </div>
+                <p>"Time will heal everything - Trust the process, believe in yourself"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Journey Section -->
+    <section class="wellness-section">
+        <div class="container">
+            <h2 class="section-title gsap-title">Your Wellness Journey</h2>
+            
+            <div class="wellness-cards">
+                <div class="wellness-card gsap-card">
+                    <div class="card-header">
+                        <span class="card-icon">📈</span>
+                        <h3>Weekly Mood Trend</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="moodChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+
+                <div class="wellness-card gsap-card">
+                    <div class="card-header">
+                        <span class="card-icon">⏰</span>
+                        <h3>Wellness Activities</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="progress-circle">
+                            <canvas id="activitiesChart" width="150" height="150"></canvas>
+                            <div class="progress-text">85%</div>
+                        </div>
+                        <div class="activities-list">
+                            <div class="activity-item">
+                                <span class="activity-dot meditation"></span>
+                                <span>Meditation</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-dot exercise"></span>
+                                <span>Exercise</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-dot reading"></span>
+                                <span>Reading</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mood Check-in Section (moved above inspiration) -->
+    <section class="mood-section">
+        <div class="container">
+            <h2 class="section-title gsap-title">How are you feeling today?</h2>
+            <div class="mood-selector">
+                <div class="mood-option gsap-mood" data-mood="excellent">
+                    <span class="mood-emoji">😊</span>
+                    <span class="mood-label">Excellent</span>
+                </div>
+                <div class="mood-option gsap-mood" data-mood="good">
+                    <span class="mood-emoji">😌</span>
+                    <span class="mood-label">Good</span>
+                </div>
+                <div class="mood-option gsap-mood" data-mood="okay">
+                    <span class="mood-emoji">😐</span>
+                    <span class="mood-label">Okay</span>
+                </div>
+                <div class="mood-option gsap-mood" data-mood="low">
+                    <span class="mood-emoji">😕</span>
+                    <span class="mood-label">Low</span>
+                </div>
+                <div class="mood-option gsap-mood" data-mood="struggling">
+                    <span class="mood-emoji">😔</span>
+                    <span class="mood-label">Struggling</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Inspiration Section (scorecard format) -->
+    <section class="inspiration-section">
+        <div class="container">
+            <h2 class="section-title gsap-title">Daily Inspiration</h2>
+            
+            <div class="inspiration-scorecards" id="inspirationCards">
+                <!-- Scorecards will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Helpful Resources Section -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <h2 class="section-title gsap-title">Helpful Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card gsap-card">
+                    <div class="resource-icon-container">
+                        <div class="resource-icon video">📹</div>
+                    </div>
+                    <h3>Motivational Videos</h3>
+                    <p>Inspiring TED Talks and videos to boost your motivation</p>
+                    <button class="resource-btn gsap-hover" onclick="openMotivationalVideos()">Watch Now</button>
+                </div>
+                <div class="resource-card gsap-card">
+                    <div class="resource-icon-container">
+                        <div class="resource-icon books">📚</div>
+                    </div>
+                    <h3>Self-Help Books</h3>
+                    <p>Curated collection of books for personal growth and mental wellness</p>
+                    <button class="resource-btn gsap-hover" onclick="openSelfHelpBooks()">Explore Books</button>
+                </div>
+                <div class="resource-card gsap-card">
+                    <div class="resource-icon-container">
+                        <div class="resource-icon podcasts">🎧</div>
+                    </div>
+                    <h3>Mental Health Podcasts</h3>
+                    <p>Listen to expert advice and inspiring stories</p>
+                    <button class="resource-btn gsap-hover" onclick="openPodcasts()">Listen Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose MindEase Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title gsap-title">Why Choose MindEase Campus?</h2>
+            <div class="features-grid">
+                <div class="feature-card gsap-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon ai">🧠</div>
+                    </div>
+                    <h3>AI-Powered Support</h3>
+                    <p>Get personalized emotional support and guidance available 24/7</p>
+                </div>
+                <div class="feature-card gsap-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon secure">🛡</div>
+                    </div>
+                    <h3>100% Private & Secure</h3>
+                    <p>Your conversations are encrypted and completely confidential</p>
+                </div>
+                <div class="feature-card gsap-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon counselors">⏰</div>
+                    </div>
+                    <h3>Professional Counselors</h3>
+                    <p>Book sessions with licensed therapists when you need professional support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section" id="support">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo gsap-logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#10B981"/>
+                    </svg>
+                    <span>MindEase Campus</span>
+                </div>
+                <div class="footer-text">
+                    <p>Supporting student mental health one step at a time</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy" class="gsap-hover">Privacy Policy</a>
+                    <a href="#terms" class="gsap-hover">Terms of Service</a>
+                    <a href="#contact" class="gsap-hover">Contact Us</a>
+                    <a href="#about" class="gsap-hover">About</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MindEase Campus. All rights reserved.</p>
+                <p class="footer-quote">Every journey begins with a single step 🌟</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login/Signup Modal -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="form-container">
+                <div class="form-toggle">
+                    <button id="login-form-btn" class="toggle-btn active">Login</button>
+                    <button id="signup-form-btn" class="toggle-btn">Signup</button>
+                </div>
+                <form id="login-form" class="auth-form">
+                    <h2>Login</h2>
+                    <input type="text" id="login-username" placeholder="Username" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <form id="signup-form" class="auth-form" style="display: none;">
+                    <h2>Signup</h2>
+                    <input type="text" id="signup-username" placeholder="Username" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <button type="submit">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-header">
+            <span>Chat with us</span>
+            <button class="close-chat-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="chat-message" placeholder="Type a message...">
+                <button id="send-chat-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <button class="open-chat-btn">💬</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
