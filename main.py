@@ -93,7 +93,7 @@ def login_for_access_token(user: UserCreate, db: Session = Depends(get_db)):
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the MindEase Campus API"}
+    return {"message": "Welcome to the Wellspring API"}
 
 # Chatbot route
 @app.post("/chatbot/")

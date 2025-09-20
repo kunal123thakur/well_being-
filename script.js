@@ -51,7 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeButtons();
     createDynamicBrainParticles();
     initializeTouchSupport();
+    showWelcomeMessage();
 });
+
+function showWelcomeMessage() {
+    showAlert('Welcome to Wellspring!', 'Please log in or sign up to continue.');
+    const modal = document.getElementById('auth-modal');
+    modal.style.display = 'block';
+}
 
 // Custom Cursor - REMOVED ENTIRE FUNCTION
 
@@ -508,8 +515,11 @@ loginForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-        showAlert('Login Successful', 'Welcome back!');
+        showAlert('Login Successful', `Welcome back, ${username}!`);
         modal.style.display = 'none';
+        document.getElementById('username-display').textContent = username;
+        document.getElementById('username-display').style.display = 'inline';
+        document.querySelector('.nav-login-btn').style.display = 'none';
     } else {
         showAlert('Login Failed', 'Invalid username or password.');
     }

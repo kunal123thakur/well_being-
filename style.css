@@ -264,6 +264,11 @@ body {
     transition: all 0.3s ease;
 }
 
+#username-display {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
 /* Hero Section */
 .hero-section {
     padding: 120px 0 80px;
